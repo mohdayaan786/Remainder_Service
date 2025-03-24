@@ -54,9 +54,31 @@ const updateTicket = async(id, data) => {
     }
 }
 
+const subsrcribeEvents = async (paylaod) => {
+    let service = paylaod.service;
+    let data = paylaod.data;
+    switch(service){
+        case 'sendBasicEmail':
+            await sendBasicEmail(data.mailFrom, data.mailTo, data.mailSubject, data.mailBody);
+            break;
+        case 'fetchPendingEmails': 
+            await fetchPendingEmails();
+            break;
+        case 'createTicket':
+            await createNotification(data);
+            break;
+        case 'updateTicket':
+            await updateTicket(data.id, data);
+            break;
+        default:
+            console.log('Invalid Service');
+    }
+}
+
 module.exports = {
     sendBasicEmail,
     fetchPendingEmails,
     createNotification,
-    updateTicket
+    updateTicket,
+    subsrcribeEvents
 };
