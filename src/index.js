@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { port } = require('./config/serverConfig');
-//const {sendBasicEmail} = require('./services/email-service');
 const setUpJobs = require('./utils/job');
 const TicketController = require('./controllers/ticket-controller');
 const {createChannel, subscribeMessage} = require('./utils/message-queue');
@@ -23,13 +22,6 @@ const setupAndStartServer = async () => {
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
         setUpJobs();
-        // sendBasicEmail(
-        //     '"Support Team" <support@admin.com>',
-        //     'mohdamaan069@gmail.com',
-        //     'Test Email',
-        //     'Hello World!'
-        // );
-        
     });
 }
 

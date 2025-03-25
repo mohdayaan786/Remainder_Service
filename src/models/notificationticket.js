@@ -10,26 +10,26 @@ module.exports = (sequelize, DataTypes) => {
   }
   NotificationTicket.init({
     subject: {
-      type : DataTypes.STRING,
-      allowNull : false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     content: {
-      type : DataTypes.STRING,
-      allowNull : false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     recepientEmail: {
-      type : DataTypes.STRING,
-      allowNull : false
+      type: DataTypes.STRING,
+      allowNull: false
     },
     status: {
-      type : DataTypes.ENUM,
-      allowNull : false,
-      values : ['pending', 'success', 'failed'],
-      defaultValue : 'pending'
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: ['pending', 'success', 'failed'],
+      defaultValue: 'pending'
     },
     notificationTime: {
-      type : DataTypes.DATE,
-      allowNull : false
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     sequelize,

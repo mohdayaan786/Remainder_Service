@@ -1,21 +1,21 @@
 const TicketService = require('../services/email-service');
 
 const create = async (req, res) => {
-    try{
+    try {
         const response = await TicketService.createNotification(req.body);
         return res.status(201).json({
-            success : true,
-            data : response,
-            message : "Succesfully registered an email reminder",
-            err : {}
+            success: true,
+            data: response,
+            message: "Succesfully registered an email reminder",
+            err: {}
         })
     }
-    catch(error){
+    catch (error) {
         return res.status(500).json({
-            success : false,
-            data : {},
-            message : "unable to register an email reminder",
-            err : error
+            success: false,
+            data: {},
+            message: "unable to register an email reminder",
+            err: error
         });
     }
 }

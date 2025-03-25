@@ -26,7 +26,7 @@ const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
 const fetchPendingEmails = async () => {
     try {
         const response = await Repo.get({ status: "pending" });
-        return response || [];  // Ensuring it always returns an array
+        return response || [];  
     } catch (err) {
         console.error("Error fetching pending emails:", err);
         return [];
@@ -35,21 +35,21 @@ const fetchPendingEmails = async () => {
 
 
 const createNotification = async (data) => {
-    try{
+    try {
         const response = await Repo.create(data);
         return response;
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
-const updateTicket = async(id, data) => {
-    try{
-        const response = await Repo.update(id,data);
+const updateTicket = async (id, data) => {
+    try {
+        const response = await Repo.update(id, data);
         return response;
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
@@ -57,11 +57,11 @@ const updateTicket = async(id, data) => {
 const subsrcribeEvents = async (paylaod) => {
     let service = paylaod.service;
     let data = paylaod.data;
-    switch(service){
+    switch (service) {
         case 'sendBasicEmail':
             await sendBasicEmail(data.mailFrom, data.mailTo, data.mailSubject, data.mailBody);
             break;
-        case 'fetchPendingEmails': 
+        case 'fetchPendingEmails':
             await fetchPendingEmails();
             break;
         case 'createTicket':
